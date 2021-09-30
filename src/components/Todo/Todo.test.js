@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Todo from './todo';
+import Todo from './Todo';
 
 describe('<Todo />', () => {
     it('should render without errors', () => {
