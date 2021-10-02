@@ -20,15 +20,13 @@ const CALENDAR_HEADER = (
 const renderCalenderBody = (dates, todos, clickDone) => {
   let i = 0;
   const rows = [];
-  for (let week=0; week<5; week++){
-    let day = 0; // Sunday
-
+  for (let week = 0; week < 5; week++) {
     let row = [];
-    for (let day=0; day<7; day++) {
+    for (let day = 0; day < 7; day++) {
       const date = dates[i];
       if (date !== undefined && day === date.getDay()) {
         row.push(
-          <Table.Cell className={`cell ${day === 0 && 'sunday'}`} key={7*week+day}>
+          <Table.Cell className={`cell ${day === 0 && 'sunday'}`} key={7 * week + day}>
             <div className="date">{date.getDate()}</div>
             {
               todos.filter(todo => {
@@ -39,7 +37,7 @@ const renderCalenderBody = (dates, todos, clickDone) => {
                 return (
                   <div
                     key={todo.id}
-                    className={`todoTitle ${todo.done ? 'done':'notdone'}`}
+                    className={`todoTitle ${todo.done ? 'done' : 'notdone'}`}
                     onClick={() => clickDone(todo.id)}>
                     {todo.title}
                   </div>
@@ -50,7 +48,7 @@ const renderCalenderBody = (dates, todos, clickDone) => {
         )
         i++;
       } else {
-        row.push(<Table.Cell key={7*week+day}> </Table.Cell>)
+        row.push(<Table.Cell key={7 * week + day}> </Table.Cell>)
       }
     }
     rows.push(row);
@@ -64,7 +62,7 @@ const renderCalenderBody = (dates, todos, clickDone) => {
 }
 
 const renderCalendar = (dates, todos, clickDone) => (
-  <Table striped style={{"height": "600px", "width": "600px"}}>
+  <Table striped style={{ "height": "600px", "width": "600px" }}>
     {CALENDAR_HEADER}
     {renderCalenderBody(dates, todos, clickDone)}
   </Table>
@@ -77,7 +75,7 @@ const Calendar = (props) => {
   let date = 1;
   let maxDate = (new Date(year, month + 1, 0)).getDate();
 
-  for (let date=1; date<=maxDate; date++) {
+  for (let date = 1; date <= maxDate; date++) {
     dates.push(new Date(year, month, date));
   }
 
